@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx", // Jest에서 JSX를 변환할 수 있도록 설정
+    "module": "commonjs", // Jest와 호환되는 CommonJS 모듈 사용
+    "paths": {
+      "@components/*": ["./components/*"],
+      "@lib/*": ["./lib/*"],
+      "@utils/*": ["./utils/*"],
+      "@hooks/*": ["./hooks/*"],
+      "@styles/*": ["./styles/*"],
+      "@story/*": ["./stories/*"]
+    }
+  }
+}

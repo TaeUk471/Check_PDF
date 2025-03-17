@@ -1,0 +1,30 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["package.json", "turbo.json"],
+  "tasks": {
+    "dev": {
+      "cache": false,
+      "dependsOn": ["^dev"],
+      "outputs": [],
+      "inputs": ["backend/**", "frontend/**", "package/**"]
+    },
+    "build": {
+      "outputs": ["dist/**"],
+      "dependsOn": ["^build"],
+      "inputs": ["backend/**", "frontend/**", "package/**"]
+    },
+    "lint": {
+      "outputs": [],
+      "inputs": ["backend/**", "frontend/**", "package/**"],
+      "cache": false
+    },
+    "format": {
+      "outputs": [],
+      "inputs": ["backend/**", "frontend/**", "package/**"]
+    },
+    "test": {
+      "outputs": ["coverage/**"],
+      "inputs": ["backend/**", "frontend/**", "package/**"]
+    }
+  }
+}

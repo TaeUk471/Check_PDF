@@ -1,0 +1,142 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type CoverFile {
+  base64: String!
+  name: String!
+}
+
+input CreateUserInput {
+  email: String!
+  name: String!
+}
+
+type Dashboard {
+  fail: Int!
+  process: Int!
+  success: Int!
+}
+
+input FileInput {
+  fileId: String
+  fileName: String
+  group: String!
+}
+
+type FilePath {
+  filePath: String!
+}
+
+type FileSet {
+  group: String!
+  typeId: ID!
+}
+
+type FolderNames {
+  keys: [String!]!
+  values: [String!]!
+}
+
+input FolderNamesInput {
+  keys: [String!]!
+  values: [String!]!
+}
+
+type FolderSet {
+  folderName: String!
+  groupId: ID!
+  typeCount: Float!
+}
+
+type Hospital {
+  hospitalId: Int!
+  hospitalName: String!
+}
+
+type HospitalResponse {
+  hospital: Hospital!
+  message: String!
+}
+
+type Mutation {
+  createHospital(hospitalId: Int!, hospitalName: String!): HospitalResponse!
+  createType(input: TypeInput!): TypeMessage!
+  createUser(input: CreateUserInput!): User!
+  deleteHospital(hospitalId: Int!): Boolean!
+  deleteUser(id: String!): Boolean!
+  updateUser(email: String!, id: String!, name: String!): User!
+}
+
+type NewType {
+  folderNames: FolderNames!
+  group: [OldTypesData!]!
+  newHospitalTypeFiles: [NewTypesDataType!]!
+}
+
+type NewTypesDataType {
+  group: String!
+  typeId: Int!
+  typeName: String!
+}
+
+type Notification {
+  createdAt: String!
+  fileName: FilePath!
+  hospitalId: ID!
+  hospitalName: String!
+  severity: Severity!
+  title: String!
+}
+
+type OldTypesData {
+  coverPdf: String!
+  groupName: String!
+  typeIds: [Int!]!
+}
+
+type Query {
+  dashboard: Dashboard!
+  getUser(id: String!): User
+  hospitals: [Hospital!]!
+  newTypes(hospitalId: Int!): NewType!
+  notifications: [Notification!]!
+  types(hospitalId: Int!): TypeFilesOutput!
+  users: [User!]!
+}
+
+"""Notification severity levels"""
+enum Severity {
+  DANGER
+  WAITING
+  WARNING
+}
+
+type TypeFilesOutput {
+  folderNames: FolderNames!
+  typeFiles: [TypesDataType!]!
+}
+
+input TypeInput {
+  files: [FileInput!]!
+  folderNames: FolderNamesInput!
+  hospitalId: Float!
+}
+
+type TypeMessage {
+  mergedFolders: [FolderSet!]!
+  message: String!
+  status: String!
+}
+
+type TypesDataType {
+  coverFile: CoverFile!
+  group: String
+  typeId: ID!
+}
+
+type User {
+  email: String!
+  id: ID!
+  name: String!
+}

@@ -1,0 +1,51 @@
+# 🔹 GraphQL에서 모든 Users 가져오기 (Query)
+POST http://localhost:4000/graphql
+Content-Type: application/json
+
+{
+  "query": "query { users { id name email } }"
+}
+
+###
+
+# 🔹 특정 User 가져오기 (Query)
+POST http://localhost:4000/graphql
+Content-Type: application/json
+
+{
+  "query": "query getUser($id: String!) { getUser(id: $id) { id name email } }",
+  "variables": { "id": "1" }
+}
+
+###
+
+# 🔹 User 생성 (Mutation)
+POST http://localhost:4000/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation createUser($name: String!, $email: String!) { createUser(input: {name: $name, email: $email}) { id name email } }",
+  "variables": { "name": "Alice", "email": "alice@example.com" }
+}
+
+###
+
+# 🔹 User 업데이트 (Mutation)
+POST http://localhost:4000/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation updateUser($id: String!, $name: String!, $email: String!) { updateUser(id: $id, name: $name, email: $email) { id name email } }",
+  "variables": { "id": "1", "name": "Updated Alice", "email": "updated.alice@example.com" }
+}
+
+###
+
+# 🔹 User 삭제 (Mutation)
+POST http://localhost:4000/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation deleteUser($id: String!) { deleteUser(id: $id) }",
+  "variables": { "id": "1" }
+}

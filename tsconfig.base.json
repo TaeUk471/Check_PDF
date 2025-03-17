@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@frontend/*": ["frontend/*"],
+      "@backend/*": ["backend/*"],
+      "@packages/*": ["packages/*"]
+    }
+  },
+  "include": ["frontend/**/*", "backend/**/*", "packages/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
